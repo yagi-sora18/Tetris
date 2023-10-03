@@ -133,6 +133,12 @@
   <ItemGroup>
     <ClCompile Include="AppMain.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="InputControl.h" />
+    <ClInclude Include="RankingScene.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="TitleScene.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
