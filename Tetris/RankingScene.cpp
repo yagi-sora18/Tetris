@@ -323,6 +323,12 @@ void ranking_input_name_draw(void)
 	{
 		DrawFormatString((i % 13 * 50) + 300, (i / 13 * 50) + 530, GetColor(255, 255, 255), "%-3c", '0' + i);
 	}
+	DrawFormatString(300, 220, GetColor(255, 255, 255), ">%s", New_Score.name);
+
+	SetFontSize(20);
+
+	//選択している文字をフォーカスしている
+	DrawBox((Cursor.x * 50) + 290, (Cursor.y * 50) + 330, (Cursor.x * 50) + 330, (Cursor.y * 50) + 370, GetColor(255, 255, 255), FALSE);
 }
 
 
