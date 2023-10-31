@@ -6,7 +6,7 @@
 /****************************************
 *マクロ定義
 *****************************************/
-#define RNKING_FILE          ("dat/rankingdata.csv")
+#define RANKING_FILE          ("dat/rankingdata.csv")
 #define RANKING_MAX                (10)
 #define RANKING_NAME_LEN     (11)
 /****************************************
@@ -28,7 +28,7 @@ typedef struct
 /****************************************
 *グローバル変数宣言
 *****************************************/
-T_RANKING Rankig_Data[RANKING_MAX];            //ランキングデータ
+T_RANKING Ranking_Data[RANKING_MAX];            //ランキングデータ
 T_RANKING New_Score;                               //新しいスコアデータ
 int DispMode;                                                //表示モード
 
@@ -38,7 +38,7 @@ int name_num;
 *プロトタイプ宣言
 *****************************************/
 void file_read(void);              //ファイル読み込み
-void file_Write(void);                  //ファイル書き込み
+void file_write(void);                  //ファイル書き込み
 void ranking_sort(void);           //ランキングソート処理
 void ranking_input_name(void);     //名前入力処理
 void ranking_input_name_draw(void);       //名前入力描画処理
@@ -108,7 +108,7 @@ void RnkingScene_Draw(void)
 	default:
 		for (i = 0; i < RANKING_MAX; i++)
 		{
-			DrawFormatString(20, 10 + (i * 25), GetColor(255, 255, 255), "%2d,%10s,%10d", Ranking_Data[i].rank, Ranking_Data[i].name, Ranking_Data[i].score);
+			DrawFormatString(20, 10 + (i * 25), GetColor(255, 255, 255), "%2d,%10s,%10d",Ranking_Data[i].rank, Ranking_Data[i].name, Ranking_Data[i].score);
 }
 		break;
 	}
@@ -157,7 +157,7 @@ void file_read(void)
 	{
 		for (i = 0; i < RANKING_MAX; i++)
 		{
-			fscanf_s(fp, "%2d,%[^,],%10d╲n", &Rankig_Data[i].rank, Rankig_Data[i].name, RANKING_NAME_LEN, &Ranking_Data[i].score);
+			fscanf_s(fp, "%2d,%[^,],%10d╲n", &Ranking_Data[i].rank, Ranking_Data[i].name, RANKING_NAME_LEN, &Ranking_Data[i].score);
 		}
 
 		fclose(fp);

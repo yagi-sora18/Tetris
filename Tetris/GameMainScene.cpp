@@ -18,7 +18,7 @@
 /********************************
 *グローバル変数宣言
 *********************************/
-int backGround_image;           //背景画像イメージ
+int BackGround_image;           //背景画像イメージ
 int BackGround_sound;           //BGM
 int GameOver_sound;             //ゲームオーバー
 int Score;                      //スコア
