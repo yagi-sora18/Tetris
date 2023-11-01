@@ -95,7 +95,7 @@ void RankingScene_Update(void)
 * 引 数：なし
 * 戻り値：なし
 *****************************************/
-void RnkingScene_Draw(void)
+void RankingScene_Draw(void)
 {
 	int i;
 

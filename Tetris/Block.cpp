@@ -191,7 +191,7 @@ void Block_Update(void)
 	//ブロックの回転(反時計回り)
 	if ((GetButtonDown(XINPUT_BUTTON_A) == TRUE) || (GetButtonDown(XINPUT_BUTTON_Y) == TRUE))
 	{
-		turn_block(TURN_CROCKWICE);
+		turn_block(TURN_ANTICROCKWICE);
 	}
 
 	//落下処理
@@ -239,7 +239,7 @@ void Block_Draw(void)
 	//次のブロックとストックされたブロックを描画
 	for (i = 0; i < BLOCK_TROUT_SIZE; i++)
 	{
-		for (j = 0; j < BLOCK_TROUT_SIZE; i++)
+		for (j = 0; j < BLOCK_TROUT_SIZE; j++)
 		{
 			//次のブロックを描画
 			DrawGraph(BLOCK_SIZE * j + BLOCK_NEXT_POS_X, BLOCK_SIZE * i + BLOCK_NEXT_POS_Y, BlockImage[Next[i][j]], TRUE);
@@ -321,7 +321,7 @@ void create_block(void)
 	//新しいブロックをセット&次のブロックを生成
 	for (i = 0; i < BLOCK_TROUT_SIZE; i++)
 	{
-		for (j = 0; j < BLOCK_TROUT_SIZE; i++)
+		for (j = 0; j < BLOCK_TROUT_SIZE; j++)
 		{
 			DropBlock[i][j] = Next[i][j];
 			Next[i][j] = (BLOCK_STATE)C_BLOCK_TABLE[block_type][i][j];
@@ -359,6 +359,15 @@ void move_block(void)
 	if (GetButtonDown(XINPUT_BUTTON_DPAD_RIGHT))
 	{
 		if (check_overlap(DropBlock_X + 1, DropBlock_Y + 1) == TRUE)
+		{
+			DropBlock_Y++;
+		}
+	}
+
+	//上入力時(ハードドロップ処理)
+	if (GetButton(XINPUT_BUTTON_DPAD_UP))
+	{
+		while (check_overlap(DropBlock_X, DropBlock_Y + 1) == TRUE)
 		{
 			DropBlock_Y++;
 		}
