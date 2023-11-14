@@ -193,6 +193,11 @@ void Block_Update(void)
 	{
 		turn_block(TURN_ANTICROCKWICE);
 	}
+	//ブロックの回転（時計回り）
+	if ((GetButtonDown(XINPUT_BUTTON_B) == TRUE) || (GetButtonDown(XINPUT_BUTTON_X) == TRUE))
+	{
+		turn_block(TURN_CROCKWICE);
+	}
 
 	//落下処理
 	WaitTime++;     //カウンタの更新
@@ -326,17 +331,17 @@ void create_block(void)
 			DropBlock[i][j] = Next[i][j];
 			Next[i][j] = (BLOCK_STATE)C_BLOCK_TABLE[block_type][i][j];
 		}
-}
+	}
 
-//出現位置の設定
-DropBlock_X = DROP_BLOCK_INIT_X;
-DropBlock_Y = DROP_BLOCK_INIT_Y;
+	//出現位置の設定
+	DropBlock_X = DROP_BLOCK_INIT_X;
+	DropBlock_Y = DROP_BLOCK_INIT_Y;
 
-//生成できなかった時、ゲームオーバーにかんいする
-if (check_overlap(DropBlock_X, DropBlock_Y) == FALSE)
-{
-	Generate_Flg = FALSE;
-}
+	//生成できなかった時、ゲームオーバーにかんいする
+	if (check_overlap(DropBlock_X, DropBlock_Y) == FALSE)
+	{
+		Generate_Flg = FALSE;
+	}
 }
 
 /****************************************
@@ -360,7 +365,7 @@ void move_block(void)
 	{
 		if (check_overlap(DropBlock_X + 1, DropBlock_Y + 1) == TRUE)
 		{
-			DropBlock_Y++;
+			DropBlock_X++;
 		}
 	}
 
